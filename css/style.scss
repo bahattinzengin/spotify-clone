@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;800;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'poppins';
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 8px 15px;
+    margin-top: 20px;
+
+    #logo {
+        display: none;
+        width: 40px;
+    }
+
+
+    @media (max-width:870px) {
+        #logo {
+            display: block;
+
+
+        }
+
+        #logo-text {
+            display: none;
+        }
+    }
+
+
+
+    nav {
+        display: flex;
+        flex-direction: column;
+
+
+
+        a {
+            padding: 20px 10px;
+            display: flex;
+            gap: 5px;
+            transition: all 0.3s;
+            border-radius: 10px;
+            white-space: nowrap; // yazılar tek satırda olacak
+
+            @media (max-width:870px) {
+                span {
+                    display: none;
+
+                }
+
+                i {
+                    font-size: 20px;
+                }
+
+            }
+
+
+            &:hover {
+                background: rgb(32, 32, 32);
+            }
+
+        }
+
+
+    }
+
+    img {
+        max-width: 130px;
+        object-fit: contain;
+    }
+}
+
+
+main {
+    width: 100%;
+
+}
+
+// ana içerik üst kısım
+
+main header {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+
+
+    @media (max-width:870px) {
+        justify-content: center;
+    }
+
+    form {
+        display: flex;
+
+        input {
+            padding: 6px 12px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background: #1bd954;
+            height: 100%;
+            padding: 0 25px;
+            border: none;
+            border: 0 5px 5px 0;
+            cursor: pointer;
+            color: white;
+
+            &:hover {
+                background: #089131;
+
+            }
+        }
+
+
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+
+        @media (max-width:870px) {
+            display: none;
+        }
+
+        li {
+            padding: 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 300ms;
+
+            &:hover {
+                background: rgb(60, 60, 60);
+            }
+
+
+        }
+    }
+
+}
+
+// ana içerik alt kısım
+
+main .songs {
+    background: rgb(42, 42, 42);
+    height: 100%;
+    padding: 10px;
+
+}
+
+main .songs #title {
+font-size: x-large;
+    padding: 8px;
+}
+
+main #list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-y: auto;
+    height: 90vh;
+
+    &::-webkit-scrollbar {
+        background-color: black;
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #067026;
+    }
+
+    @media (max-width:768px) {
+
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .card {
+
+
+        width: 200px;
+        padding: 15px;
+        background: #181818;
+        border-radius: 6px;
+        cursor: pointer;
+
+
+        &:hover .play {
+            opacity: 1;
+            bottom: 20px;
+        }
+
+        figure {
+
+            position: relative;
+
+            img {
+                width: 100%;
+                border-radius: 6px;
+                margin-bottom: 10px;
+            }
+
+            .play {
+
+                position: absolute;
+                background: #1bd954;
+                right: 10px;
+
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: grid;
+                place-items: center;
+                font-size: 23px;
+                //görünmez olacak
+                opacity: 0;
+                bottom: -20px;
+                transition: all 0.3s;
+
+
+                &:hover {
+                    background: #044d1a;
+                    scale: 0.9;
+                }
+            }
+
+            h4 {
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+
+/* oynatılan şarkı barı */
+
+.playing {
+
+    position: fixed;
+    display: flex;
+    margin-top: 20px;
+    bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    z-index: 100;
+    padding: 10px 40px;
+    width: 100%;
+    background-color: #3EECAC;
+    background-image: linear-gradient(90deg, #3EECAC 0%, #EE74E1 100%);
+
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.612);
+
+    @media (max-width:768px) {
+        font-size: 11px;
+        padding: 5px;
+    }
+
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+        
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        }
+
+    audio {
+        width: 300px;
+        scale: 0.9;
+    }
+}
+
+// animasyon ekleme
+.animate {
+    animation: turn 4s linear infinite;
+}
+
+//  animasyonun hangi değerden hangi değere gidecegini ifade eder
+@keyframes turn {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    height: 50px;
+    margin: auto;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  
+  .bar {
+    height: 5px;
+    width: 12px;
+    animation-duration: 0.45s;
+    animation-name: changeHeight;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  .red {
+    background-color: #E50000;
+    box-shadow: 1px 1px 10px #E50000;
+    animation-delay: 0.10s;
+  }
+  
+  .orange {
+    background-color: #FF8D00;
+    box-shadow: 1px 1px 10px #FF8D00;
+    animation-delay: 0.20s;
+  }
+  
+  .yellow {
+    background-color: #FFEE00;
+    box-shadow: 1px 1px 10px #FFEE00;
+    animation-delay: 0.25s;
+  }
+  
+  .green {
+    background-color: #008121;
+    box-shadow: 1px 1px 10px #008121;
+    animation-delay: 0.30s;
+  }
+  
+  .blue {
+    background-color: #004CFF;
+    box-shadow: 1px 1px 10px #004CFF;
+    animation-delay: 0.35s;
+  }
+  
+  .violet {
+    background-color: #760188;
+    box-shadow: 1px 1px 10px #760188;
+    animation-delay: 0.40s;
+  }
+  
+  @keyframes changeHeight {
+    from {
+      height: 5px;
+    }
+  
+    to {
+      height: 40px;
+    }
+  }
