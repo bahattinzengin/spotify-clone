@@ -8,4 +8,4 @@ https://github.com/bahattinzengin/spotify-clone/assets/140658226/e771ac55-2316-4
 - apiden müzik listesi eklendi.
 - her bir sanatçı için 5 şarkı eklendi
 
-http://127.0.0.1:5500/index.html
+
